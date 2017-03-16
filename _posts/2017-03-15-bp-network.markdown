@@ -4,7 +4,7 @@ title:      "BP神经网络"
 subtitle:   "BP Network"
 date:       2017-03-14 12:00:00
 author:     "HE"
-header-img: "img/post-bg-nextgen-web-pwa.jpg"
+header-img: "img/bp-bg.jpg"
 header-mask: 0.3
 catalog:    true
 tags:
