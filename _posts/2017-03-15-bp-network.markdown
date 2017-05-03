@@ -65,7 +65,7 @@ $$b_{i}=b_{i}-\eta \frac{\partial E(w,b)}{\partial b_{i}}$$
 
 其中$$\frac{\partial E(w,b)}{\partial w_{ij}}$$和$$\frac{\partial E(w,b)}{\partial b_{i}}$$就要求激活函数可导。
 
-根据梯度下降学习规则，关键是要求解误差函数关于各个权值的梯度，隐藏层到输出层的权值梯度如下：
+根据梯度下降学习规则以及链式求导法则，关键是要求解误差函数关于各个权值的梯度，隐藏层到输出层的权值梯度如下：
 
 $$\Delta w_{ij}=-\eta \frac{\partial E(w,b)}{\partial w_{ij}}=-\eta \frac{\partial E(w,b)}{\partial x_{j}}\cdot \frac{\partial x_{j}}{\partial s_{j}}\cdot \frac{\partial s_{j}}{\partial w_{ij}}$$
 
@@ -273,7 +273,7 @@ $$h=log_{2}m$$
 
 $$h=\sqrt{mn}$$
 
-其中，h是隐藏层的神经元数目，m是输入层的神经元数目，n是输出层的神经元数目，$$\alpha$$是1~10的调节常数
+其中，$$h$$是隐藏层的神经元数目，$$m$$是输入层的神经元数目，$$n$$是输出层的神经元数目，$$\alpha$$是1~10的调节常数
 
 #### Delta学习规则
 Delta学习规则是一种简单的监督学习算法，该算法根据神经元输出的预测值与真实值的差别来调整权值，其表达式如下：
