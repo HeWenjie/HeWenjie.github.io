@@ -36,6 +36,7 @@ tags:
 原子操作，就是指不会被线程调度机制打断的操作，原子操作一旦开始，就一直运行到结束，中间不会有任何上下文切换。
 
 CAS，Compare and Swap，比较并交换，CAS通过将内存中的值与指定数据进行比较，当数值一样时将内存中的数据替换为新的值。在Intel处理器中，CAS操作通过指令CMPXCHG实现，CAS原子操作在维基百科中的代码如下所示：
+
 ```c++
 int compare_and_swap(int* reg, int oldval, int newval)
 {
@@ -45,5 +46,24 @@ int compare_and_swap(int* reg, int oldval, int newval)
 		*reg = newval;
 	END_ATOMIC();
 	return old_reg_val;
+}
+```
+
+##### 无锁队列的实现
+
+下面的无锁队列的实现来自John D. Valois的[Implementing Lock-Free Queues](http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.53.8674&rep=rep1&type=pdf)
+
+进队列的CAS实现方式：
+
+````c++
+// 根据论文中的伪代码实现
+void ENQUEUE(x) {
+	q = new record();
+	q->value = x;
+	q->next = NULL;
+	do {
+		p = tail;
+		succ = CAS(p, next, )
+	} while ();
 }
 ```
