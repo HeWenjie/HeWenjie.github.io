@@ -78,6 +78,22 @@ $$\tau_{\alpha}$$是$$\mathbb{R}^{n} \rightarrow \mathbb{R}^{n}$$的函数:
 
 $$\tau_{\alpha}(x)_{i}=(\left|x_{i}\right|-\alpha)+sgn(x_{i})$$
 
+$$f(x):=\left\|Ax-b\right\|^{2}$$，为了保证$$x_{k}$$能收缩到一个极小值$$x^{*}$$，要求$$t_{k}\in (0,\frac{1}{\left\|A^{T}A\right\|})$$
 
+上述问题更广义的模型
+
+$$min\{F(x)\equiv f(x)+g(x):x\in \mathbb{R}^{n}\}$$
+
+* $$g:\mathbb{R}^{n} \rightarrow \mathbb{R}$$是一个连续凸函数，但有可能不光滑
+
+* $$f:\mathbb{R}^{n} \rightarrow \mathbb{R}$$是一个光滑的凸函数，如Lipschitz连续
+
+  $$\left\|\triangle f(x)-\triangle f(y)\right\| \leqslant L(f) \left\|x-y\right\| \ for \ every \ x,y \ \in \mathbb{R}^{n}$$
+
+  $$\left\| \cdot \right\|$$是欧几里得范数，$$L(f)>0$$是$$\triangledown f$$的Lipschitz常数
+
+对于$$L > 0$$，$$F(x):=f(x)+g(x)$$在给定点$$y$$的二次近似是：
+
+$$Q_{L}(x,y):=f(y)+\left \langle x-y, \triangledown f(y) \right \rangle+\frac{L}{2}\left\|x-y\right\|^{2}+g(x)$$
 
 ### 快速迭代收缩阈值算法FISTA
