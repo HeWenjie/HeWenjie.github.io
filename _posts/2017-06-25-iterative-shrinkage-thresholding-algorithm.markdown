@@ -96,4 +96,88 @@ $$min\{F(x)\equiv f(x)+g(x):x\in \mathbb{R}^{n}\}$$
 
 $$Q_{L}(x,y):=f(y)+\left \langle x-y, \triangledown f(y) \right \rangle+\frac{L}{2}\left\|x-y\right\|^{2}+g(x)$$
 
+则极小值点是：
+
+$$p_{L}(y):=argmin\{Q_{L}(x,y):x\in \mathbb{R}^{n}\}$$
+
+忽略常数项：
+
+$$p_{L}(y)=\underset{x}{argmin}\{g(x)+\frac{L}{2}\left\|x-(y-\frac{1}{L}\triangledown f(y))\right\|^{2}\}$$
+
+ISTA的迭代步是：
+
+$$x_{k}=p_{L}(x_{k-1})$$
+
+$$L$$起到步长的作用
+
+**固定步长ISTA算法：**
+
+![固定步长ISTA算法](\img\ista\const-stepsize-ista-algorithm.png)
+
+**固定步长ISTA算法过程：**
+
+输入：$$L:=L(f)-\triangledown f$$的一个Lipschitz常数
+
+1. 给定$$x_{0}\in \mathbb{R}^{n}$$
+
+2. $$(k\geqslant 1)$$计算$$x_{k}=p_{L}(x_{k-1})$$
+
+但是Lipschitz常数$$L(f)$$不容易求，考虑步长不固定的ISTA算法
+
+**不固定步长ISTA算法：**
+
+![不固定步长ISTA算法](\img\ista\backtracking-ista-algorithm.png)
+
+**不固定步长ISTA算法过程：**
+
+1. 给定$$L_{0}>0,\eta > 1,x_{0}\in \mathbb{R}^{n}$$
+
+2. $$(k\geqslant 1)$$计算最小的非负整数$$i_{k}$$，有$$\bar{L}=\eta^{i_{k}}L_{k-1}$$，使得
+
+   $$F(p_{\bar{L}}(x_{j-1})) \leqslant Q_{\bar{L}}(p_{\bar{L}}(x_{j-1}),x_{j-1})$$
+
+   令$$L_{k}=\eta^{i_{k}}L_{k-1}$$并计算
+
+   $$x_{k}=p_{L_{k}}(x_{k-1})$$ 
+
 ### 快速迭代收缩阈值算法FISTA
+
+**固定步长FISTA算法：**
+
+![固定步长FISTA算法](\img\ista\const-stepsize-fast-ista-algorithm.png)
+
+**固定步长FISTA算法过程：**
+
+输入：$$L:=L(f)-\triangledown f$$的一个Lipschitz常数
+
+1. 给定$$y_{1}=x_{0} \in \mathbb{R}^{n}, t_{1}=1$$
+
+2. $$(k\geqslant 1)$$计算
+
+   $$x_{k}=p_{L}(y_{k})$$
+
+   $$t_{k+1}=\frac{1+\sqrt{1+4t^{2}_{k}}}{2}$$
+
+   $$y_{k+1}=x_{k}+\left ( \frac{t_{k}-1}{t_{k+1}}\right )(x_{k}-x_{k-1})$$
+
+**不固定步长FISTA算法：**
+
+![不固定步长FISTA算法](\img\ista\backtracking-fast-ista-algorithm.png)
+
+**不固定步长FISTA算法过程：**
+
+1. 给定$$L_{0}>0,\eta > 1, x_{0} \in \mathbb{R}^{n}$$，令$$y_{1}=x_{0},t_{1}=1$$
+
+2. $$(k\geqslant 1)$$计算最小的非负整数$$i_{k}$$，有$$\bar{L}=\eta^{i_{k}}L_{k-1}$$，使得
+
+   $$F(p_{\bar{L}}(y_{k})) \leqslant Q_{\bar{L}}(p_{\bar{L}}(y_{k}),y_{k})$$
+
+   令$$L_{k}=\eta^{i_{k}}L_{k-1}$$并计算
+
+   $$x_{k}=p_{L_{k}}(y_{k})$$
+
+   $$t_{k+1}=\frac{1+\sqrt{1+4t^{2}_{k}}}{2}$$
+
+   $$y_{k+1}=x_{k}+\left ( \frac{t_{k}-1}{t_{k+1}}\right )(x_{k}-x_{k-1})$$
+
+FISTA与ISTA的不同在于下一个迭代点$$x_{k}$$不仅仅只依赖于前一个迭代点$$x_{k-1}$$，而是依赖于前两个迭代点$$\{x_{k-1},x_{k-2}\}$$的一个线性组合
