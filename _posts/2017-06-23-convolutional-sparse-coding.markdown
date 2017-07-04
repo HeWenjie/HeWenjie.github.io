@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "卷积稀疏编码原理"
-subtitle:   "Convolution Sparse Coding"
+subtitle:   "Convolutional Sparse Coding"
 date:       2017-06-23 12:00:00
 author:     "HE"
 header-img: "img/home-bg.jpg"
@@ -10,6 +10,10 @@ catalog:    true
 tags:
     - 卷积稀疏编码
 ---
+
+> 本文涉及的论文：
+> * 《Classification of Histology Sections via Multispectral Convolution Sparse Coding》
+> * 《Fast Convolutional Sparse Coding》
 
 **《Classification of Histology Sections via Multispectral Convolution Sparse Coding》**
 

@@ -134,7 +134,7 @@ $$L$$起到步长的作用
 
 2. $$(k\geqslant 1)$$计算最小的非负整数$$i_{k}$$，有$$\bar{L}=\eta^{i_{k}}L_{k-1}$$，使得
 
-   $$F(p_{\bar{L}}(x_{j-1})) \leqslant Q_{\bar{L}}(p_{\bar{L}}(x_{j-1}),x_{j-1})$$
+   $$F(p_{\bar{L}}(x_{k-1})) \leqslant Q_{\bar{L}}(p_{\bar{L}}(x_{k-1}),x_{k-1})$$
 
    令$$L_{k}=\eta^{i_{k}}L_{k-1}$$并计算
 
