@@ -79,7 +79,7 @@ $$hard(x,\lambda)=I_{[|x|>\lambda]}\cdot x$$
 
 **ISTA算法如下：**
 
-**输入：**$$\lambda,u^{0}$$
+**输入：**$$\lambda$$（参数），$$u^{0}$$（估计初始值）
 
 **步骤n：**$$(n \geqslant 1)$$计算
 
@@ -87,3 +87,56 @@ $$hard(x,\lambda)=I_{[|x|>\lambda]}\cdot x$$
 
 （2）$$u^{n}=thresh(u^{n-1}+\mu_{n}H^{T}(b-Hx^{n-1}),t_{n}\lambda)$$
 
+ISTA应用于$$(9)$$当$$f(u)=\frac{1}{2}\left\|Hu-b\right\|^{2}_{2}$$；$$thresh(\cdot)$$是对应于$$p(u)$$的阈值规则（例如当$$p(u)=\left\|u\right\|_{1}$$时，对应的阈值规则是软阈值，即$$thresh(x,\lambda)=shrink(x,\lambda)$$）
+
+通常$$\mu_{n}=\frac{1}{\tau}$$，其中$$\tau=2\cdot \sigma_{max}(H^{T}H)$$是$$\triangledown f(u)$$的最小的Lipschitz常数，也可以通过每次迭代更新
+
+##### FISTA
+
+**FISTA算法如下：**
+
+**输入：**$$\lambda$$（参数），$$L$$（$$\triangledown f(u)$$的Lipschitz常数）
+
+**步骤0：**设$$y_{1}=u_{0}$$（估计初始值），$$\beta_{1}=1$$
+
+**步骤n：**$$(n \geqslant 1)$$计算
+
+（1）$$u^{n}=thresh(u^{n-1}+\frac{1}{L}H^{T}(b-Hy^{n}),\frac{\lambda}{L})$$
+
+（2）$$\beta_{n+1}=\frac{1+\sqrt{1+4\beta_{n}}}{2}$$
+
+（3）$$y^{n+1}=u^{n}+\frac{\beta_{n}-1}{\beta_{n+1}}(u^{n}-u^{n-1})$$
+
+FISTA应用于$$(9)$$当$$f(u)=\frac{1}{2}\left\|Hu-b\right\|^{2}_{2}$$
+
+##### NIHT
+
+IHT/NIHT应用于$$(9)$$当$$p(u)=\left\|u\right\|_{0}$$，$$l_{0}$$范数时非零元素的数目，**NIHT算法如下：**
+
+**输入：**$$\lambda$$
+
+**步骤0：**$$u^{0}$$（估计初始值）
+
+**步骤n：**$$(n \geqslant 1)$$计算
+
+（1）$$v^{n}=H^{T}(b-Hu^{n}),\mu_{n}=\frac{(v^{n})^{T}v^{n}}{(v^{n})^{T}H^{T}Hv^{n}}$$
+
+（2）$$u^{n}=hard(u^{n-1}+\mu_{n}v^{n},\mu_{n}\lambda)$$
+
+IHT应用于$$(9)$$当$$f(u)=\frac{1}{2}\left\|Hu-b\right\|^{2}_{2}$$且$$p(u)=\left\|u\right\|_{0}$$
+
+### 基于FISTA/NIHT算法
+
+**输入：**$$\lambda$$
+
+**步骤0：**设$$y^{(1)}=z^{(0)}$$（对$$(4)$$或$$(6)$$的估计初始值）
+
+**步骤n：**$$(n \geqslant 1)$$计算
+
+（1）$$c_{n}$$：
+
+（2）
+
+（3）
+
+（4）
