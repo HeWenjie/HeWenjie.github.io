@@ -24,17 +24,17 @@ $$\{H_{k}\}$$是K个不可分的$$L_{1}\times L_{2}$$滤波器的集合，$$\{u_
 
 任何由大量不可分离的滤波器组成2D滤波器组$$\{H_{k}\}$$，可近似为数量相对较少的可分离的滤波器$$\{G_{r}\}$$的线性组合
 
-$$H_{k}\approx \sum_{r=1}^{R}\alpha_{kr}G_{r} \ \ \ \ k\in \{1,2,...,K\}$$
+$$H_{k}\approx \sum_{r=1}^{R}\alpha_{kr}G_{r} \ \ \ \ k\in \{1,2,...,K\}\ \ \ \ (2)$$
 
 假设上述式子为等式，则有
 
-$$\sum_{k=1}^{K}H_{k}*u_{k}=\sum_{r=1}^{R}G_{r}*\left ( \sum_{k=1}^{K}\alpha_{kr}u_{k}\right )$$
+$$\sum_{k=1}^{K}H_{k}*u_{k}=\sum_{r=1}^{R}G_{r}*\left ( \sum_{k=1}^{K}\alpha_{kr}u_{k}\right )\ \ \ \ (3)$$
 
 本文提出一个基于FISTA/NIHT的方法解决如下问题：
 
 $$\underset{\{u_{k}\}}{argmin} \frac{1}{2}\left\|\sum_{r=1}^{R}G_{r}*\left ( \sum_{k=1}^{K}\alpha_{kr}u_{k}\right )-b\right\|^{2}_{2}+\lambda\sum_{k=1}^{K}p(u_{k}) \ \ \ \ (4)$$
 
-$$p(x)=\alpha\left\|x\right\|_{1}+\beta\phi_{nng}(x)$$
+$$p(x)=\alpha\left\|x\right\|_{1}+\beta\phi_{nng}(x)\ \ \ \ (5)$$
 
 这个算法也用来解决以下问题：
 
@@ -51,7 +51,7 @@ $$v_{r}=\sum_{k=1}^{K}\alpha_{kr}u_{k} \ \ \ \ (7)$$
 
 $$(1)$$和$$(4)$$可以找到这样一个矩阵$$H$$，使得：
 
-$$Hu=\sum_{k=1}^{K}H_{k}*u_{k}=\sum_{r=1}^{R}G_{r}*v_{r}$$
+$$Hu=\sum_{k=1}^{K}H_{k}*u_{k}=\sum_{r=1}^{R}G_{r}*v_{r}\ \ \ \ (8)$$
 
 $$v_{r}=\sum_{k=1}^{K}\alpha_{kr}u_{k}$$以及$$u=[u_{1},u_{2},...,u_{K}]$$
 
@@ -61,7 +61,7 @@ $$\underset{\{u\}}{argmin}f(u)+\lambda \cdot p(u)\ \ \ \ (9)$$
 
 上述式子中，$$\triangledown f(u)=H^{T}(Hu-b)$$，$$H^{T}$$可以由可分离的滤波器近似得到：
 
-$$H^{T}x=[z_{1},z_{2},...,z_{R}]\cdot \alpha$$
+$$H^{T}x=[z_{1},z_{2},...,z_{R}]\cdot \alpha\ \ \ \ (10)$$
 
 $$z_{r}=G_{r}\circ x,\alpha=[\alpha_{1},\alpha_{2},...,\alpha_{R}]^{T},\alpha_{r}=[\alpha_{1r},\alpha_{2r},...,\alpha_{Kr}]$$，$$\circ$$表示相关性（等价于与旋转了180度的卷积核进行卷积）
 
@@ -133,10 +133,12 @@ IHT应用于$$(9)$$当$$f(u)=\frac{1}{2}\left\|Hu-b\right\|^{2}_{2}$$且$$p(u)=\
 
 **步骤n：**$$(n \geqslant 1)$$计算
 
-（1）$$c_{n}$$：
+（1）$$c_{n}$$：计算$$z^{n-1}$$的$$l_{1}$$损失
 
-（2）
+（2）$$\varepsilon^{(n)}=H^{T}(b-Hy^{(n)}),v=H\varepsilon^{(n)},\mu_{n}=\frac{(\varepsilon^{(n)})^{T}\varepsilon^{(n)}}{v^{T}v}$$
 
-（3）
+（3）$$z^{(n)}=thresh(z^{(n-1)}+\frac{1}{\mu_{n}}\varepsilon^{(n)},\frac{\lambda}{\mu_{n}},\alpha,\beta)$$
 
-（4）
+（4）$$\beta_{(n+1)}=\frac{1+\sqrt{1+4\beta_{n}}}{2},y^{(n+1)}=z^{(n)}+\frac{\beta_{n}-1}{\beta_{n+1}}(z^{(n)}-z^{(n-1)})$$
+
+为了解决$$(4)$$或$$(6)$$，本文提出一种基于FISTA/NIHT的算法。
