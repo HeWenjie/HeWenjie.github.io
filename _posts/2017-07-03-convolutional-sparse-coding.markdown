@@ -141,4 +141,19 @@ IHT应用于$$(9)$$当$$f(u)=\frac{1}{2}\left\|Hu-b\right\|^{2}_{2}$$且$$p(u)=\
 
 （4）$$\beta_{(n+1)}=\frac{1+\sqrt{1+4\beta_{n}}}{2},y^{(n+1)}=z^{(n)}+\frac{\beta_{n}-1}{\beta_{n+1}}(z^{(n)}-z^{(n-1)})$$
 
-为了解决$$(4)$$或$$(6)$$，本文提出一种基于FISTA/NIHT的算法。
+$$thresh(\cdot)$$函数如下所示：
+
+$$thresh(x,\lambda,\alpha,\beta)=\left\{\begin{matrix}\gamma(x,\lambda,\alpha,\beta)\ \ \ \ if \ |x|>\lambda \cdot (\alpha+\beta)\\0 \ \ \ \ otherwise\end{matrix}\right.$$
+
+$$\gamma(x,\lambda,\alpha,\beta)=\frac{x(x-sign(x)\frac{2}{\lambda \cdot \alpha})+\lambda^{2}\cdot \alpha^{2}-\lambda^{2}\cdot \beta^{2}}{x+\lambda \cdot \alpha}$$
+
+本文约束$$\alpha + \beta = 1$$，并且在每一次迭代中改变$$\alpha$$和$$\beta$$的值，$$\alpha$$初始值接近$$1$$，然后缓慢减小
+
+$$(5)$$惩罚函数会影响算法$$4$$收敛性，但《On the convergence of the iterative shrinkage/
+thresholding algorithm with a weakly convex penalty》中指出，只要惩罚函数$$p(\cdot)$$是$$\rho$$-weakly convex的，则$$(4)$$和$$(6)$$就是convex的
+
+> **$$\rho$$-weakly convex**
+> 
+> 如果当$$\tau \geqslant \rho \geqslant 0$$时，$$\Theta(x)=\frac{\tau}{2}\left\|x\right\|^{2}_{2}+p(x)$$是convex的，则函数$$\Theta$$是$$\rho$$-weakly convex的
+
+该文更是直接证明了当$$\rho=\frac{1}{2}$$时$$(5)$$惩罚函数是$$\rho$$-weakly convex的
