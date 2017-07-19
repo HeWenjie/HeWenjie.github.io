@@ -128,6 +128,6 @@ $$(4)$$可用**ADMM算法**求解，如以下算法所示：
 
 **（2）**滤波器更新：$$F^{t}_{i}\leftarrow argmin_{F_{i}}\sum_{j=1}^{n_{i}}p_{1j}(\hat{Z_{i,j}}\vec{F_{i}})+\sum_{c=1}^{C}p_{3}(\vec{f_{i,c}})$$，将参数$$\rho=\rho_{F},u=u^{t-1}_{F},v=v^{t-1}_{F}$$代入算法2
 
-**（3）**稀疏特征图更新：$$Z^{t}_{i}\leftarrow argmin_{Z_{i}}\sum_{j=1}^{n_{i}}\left { p_{1j}(\hat{F_{i}}\vec{Z_{i,j}})+p_{2j}(\vec{Z_{i,j}})\right }$$，将参数$$\rho=\rho_{Z},u=u^{t-1}_{Z},v=v^{t-1}_{Z}$$代入算法2
+**（3）**稀疏特征图更新：$$Z^{t}_{i}\leftarrow argmin_{Z_{i}}\sum_{j=1}^{n_{i}}\left \{ p_{1j}(\hat{F_{i}}\vec{Z_{i,j}})+p_{2j}(\vec{Z_{i,j}})\right \}$$，将参数$$\rho=\rho_{Z},u=u^{t-1}_{Z},v=v^{t-1}_{Z}$$代入算法2
 
 **（4）**$t=t+1$$，如果$$t\leqslant$$最大迭代次数，则返回（2）
