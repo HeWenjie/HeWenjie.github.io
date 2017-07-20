@@ -2,7 +2,7 @@
 layout:     post
 title:      "卷积稀疏编码原理"
 subtitle:   "Convolutional Sparse Coding"
-date:       2017-07-18 12:00:00
+date:       2017-07-19 12:00:00
 author:     "HE"
 header-img: "img/home-bg.jpg"
 header-mask: 0.3
@@ -54,7 +54,7 @@ $$\left\|x_{i,j}-\sum_{c=1}^{C}f_{i,c}*z^{(c)}_{i,j}\right\|^{2}_{2}$$表示重�
 
 通过$$(1)$$训练的滤波器组$$F_{i}$$会有显著的重构图像$$X_{i}$$的能力，假设训练图像$$y$$是第$$i$$类的，通过$$F_{i}$$重构的效果应该比$$F_{m}(m \neq i)$$的重构效果要好，为了得到每一个滤波器组的重构表现，应该解决以下问题：
 
-$$\underset{A}{argmin}\left\|y-\sum_{i=1}^{N}\sum_{c=1}^{C}f_{i,c}*\alpha_{i,c}\right\|^{2}_{2}+\lambda\sum_{i=1}^{N}\sum_{c=1}^{C}\left\|\alpha_{i,}\right\|_{1}\ \ \ \ (2)$$
+$$\underset{A}{argmin}\left\|y-\sum_{i=1}^{N}\sum_{c=1}^{C}f_{i,c}*\alpha_{i,c}\right\|^{2}_{2}+\lambda\sum_{i=1}^{N}\sum_{c=1}^{C}\left\|\alpha_{i,c}\right\|_{1}\ \ \ \ (2)$$
 
 $$A=\{\alpha_{i,c}\}_{i=1,...,N;c=1,...,C}$$
 
@@ -131,3 +131,61 @@ $$(4)$$可用**ADMM算法**求解，如以下算法所示：
 **（3）**稀疏特征图更新：$$Z^{t}_{i}\leftarrow argmin_{Z_{i}}\sum_{j=1}^{n_{i}}\left \{ p_{1j}(\hat{F_{i}}\vec{Z_{i,j}})+p_{2j}(\vec{Z_{i,j}})\right \}$$，将参数$$\rho=\rho_{Z},u=u^{t-1}_{Z},v=v^{t-1}_{Z}$$代入算法2
 
 **（4）**$$t=t+1$$，如果$$t\leqslant$$最大迭代次数，则返回（2）
+
+### 实验结果
+
+**数据集**
+
+* MNIST
+
+* CIFAR-10
+
+**与本文方法对比的方法**
+
+* sparse representation classification(SRC)
+
+* subspace SRC(S-SRC)
+
+* meta face learning(MFL)
+
+* collaborative representation classification(CRC)
+
+* fisher discrimination dictionary learning(FDDL)
+
+* label consistent k-svd(LCKSVD)
+
+* CSC with SVM classifier(CSC+SVM)
+
+所有的方法中的最优参数都是通过交叉校验来确定；两个数据集中的图像都是正方形；对于本文的模型，训练样本和测试样本都是原始的图像，而对于其他的稀疏表示和字典学习分类算法，所有图像需要被转化成列向量
+
+##### MNIST手写数字分类
+
+MNIST有$$10$$类手写数字数据集，包含$$60000$$张训练图像和$$10000$$张测试图像，所有的图像的维度都是$$28 \times 28$$
+
+本文随机选取$$300$$张训练图片和$$1000$$张测试图片（每一类$$30$$张训练图片和$$100$$张测试图片），CSCC模型中参数的选择如下表所示：
+
+![CSCC模型参数](/img/convolution-sparse-coding/CSCC-model-parameters.png)
+
+每一种方法的识别率如下表所示：
+
+![各方法实验结果](/img/convolution-sparse-coding/recognition-rate.png)
+
+卷积核维度$$s$$的大小对实验结果的影响：
+
+![不同维度对实验结果的影响](/img/convolution-sparse-coding/different-dimension.png)
+
+如果$$s$$太小$$(s=5)$$，滤波器只能捕捉到对分类不重要的图像的边缘和局部特征；如果$$s$$太大$$(s=45)$$，滤波器中就会出现重叠图像，会给分类带来偏差，而且大维度会增加训练时间。
+
+训练图片的数量对实验结果的影响：
+
+![不同维度对实验结果的影响](/img/convolution-sparse-coding/different-training-size.png)
+
+（训练集的大小分别是$$800,1600,2000,2500$$，训练集的大小都是$$1000$$，每一类滤波器的数量分别是$$20,40,50,60$$）
+
+##### CIFAR-10目标识别
+
+CIFAR-10数据集包含$$60000$$张$$32 \times 32$$彩色物体图片，一共$$10$$类，每类$$6000$$张图片，数据集被分为$$50000$$张训练图片和$$10000$$张测试图片
+
+对于大多数稀疏表示和字典学习算法来说，CIFAR-10中原始彩色图片的维度太大了$$(32 \times 32 \times 3 = 3072)$$，所以所有的图像都转换为灰度图以获得相对较小维度的训练集$$(32 \times 32 = 1024)$$
+
+本文随机选取$$800$$张训练图片和$$1000$$张测试图片（每一类$$80$$张训练图像和$$100$$张测试图像），参数的选择和实验结果见Table 1和Table 2
