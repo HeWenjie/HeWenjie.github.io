@@ -2,7 +2,7 @@
 layout:     post
 title:      "并查集"
 subtitle:   "Union Find"
-date:       2017-10-10 12:00:00
+date:       2017-10-11 12:00:00
 author:     "HE"
 header-img: "img/home-bg.jpg"
 header-mask: 0.3
