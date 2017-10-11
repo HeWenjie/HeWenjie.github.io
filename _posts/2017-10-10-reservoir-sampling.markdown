@@ -9,7 +9,7 @@ header-mask: 0.3
 catalog:    true
 tags:
     - 算法
-    - LeetCode
+    - C++
 ---
 
 ### 问题描述
@@ -114,11 +114,11 @@ void reservoir_sampling(vector<int> samples, vector<int> result, int K) {
 
 这道问题就可以用蓄水池算法解决
 
-问题描述：Given a singly linked list, return a random node's value from the linked list. Each node must have the same probability of being chosen.
+**问题描述：**Given a singly linked list, return a random node's value from the linked list. Each node must have the same probability of being chosen.
 
-Follow up: What if the linked list is extremely large and its length is unknown to you? Could you solve this efficiently without using extra space?
+**Follow up：** What if the linked list is extremely large and its length is unknown to you? Could you solve this efficiently without using extra space?
 
-Example:
+**Example：**
 ```c++
 // Init a singly linked list [1,2,3].
 ListNode head = new ListNode(1);
@@ -170,5 +170,63 @@ private:
  * Your Solution object will be instantiated and called as such:
  * Solution obj = new Solution(head);
  * int param_1 = obj.getRandom();
+ */
+```
+
+### LeetCode 398
+
+**问题描述：**Given an array of integers with possible duplicates, randomly output the index of a given target number. You can assume that the given target number must exist in the array.
+
+**Note：** The array size can be very large. Solution that uses too much extra space will not pass the judge.
+
+**Example：**
+
+```c++
+int[] nums = new int[] {1,2,3,3,3};
+Solution solution = new Solution(nums);
+
+// pick(3) should return either index 2, 3, or 4 randomly. Each index should have equal probability of returning.
+solution.pick(3);
+
+// pick(1) should return 0. Since in the array only nums[0] is equal to 1.
+solution.pick(1);
+```
+
+**AC**代码如下：
+
+```c++
+class Solution {
+public:
+    Solution(vector<int> nums) {
+        this->nums = nums;
+    }
+    
+    int pick(int target) {
+        int res;
+        int count = 0;
+        
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] != target) continue;
+            if (count == 0) {
+                res = i;
+            } else {
+                int j = rand() % (count + 1);
+                if (j == 0) {
+                    res = i;
+                }
+            }
+            count++;
+        }
+        
+        return res;
+    }
+private:
+    vector<int> nums;
+};
+
+/**
+ * Your Solution object will be instantiated and called as such:
+ * Solution obj = new Solution(nums);
+ * int param_1 = obj.pick(target);
  */
 ```
