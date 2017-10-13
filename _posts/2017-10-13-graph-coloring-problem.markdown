@@ -2,7 +2,7 @@
 layout:     post
 title:      "图的着色问题"
 subtitle:   "Graph Coloring Problem"
-date:       2017-10-12 12:00:00
+date:       2017-10-13 12:00:00
 author:     "HE"
 header-img: "img/home-bg.jpg"
 header-mask: 0.3
