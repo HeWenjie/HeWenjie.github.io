@@ -168,7 +168,7 @@ bob
 
 **输入**
 
-The first line contains an integer $$N$$, denoting the number of usernames. $$(1 < N \lesqlant 10000)$$
+The first line contains an integer $$N$$, denoting the number of usernames. $$(1 < N \leqslant 10000)$$
 
 The following $$N$$ lines contain $$N$$ usernames and their emails in the previous mentioned format.
 
