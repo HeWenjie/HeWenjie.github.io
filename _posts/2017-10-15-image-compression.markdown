@@ -2,7 +2,7 @@
 layout:     post
 title:      "图像压缩"
 subtitle:   "Image Compression"
-date:       2017-11-15 12:00:00
+date:       2017-10-15 12:00:00
 author:     "HE"
 header-img: "img/home-bg.jpg"
 header-mask: 0.3
