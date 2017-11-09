@@ -86,7 +86,9 @@ void backtrack(MCP &G, int i) {
 }
 ```
 
-### hihoCoder hiho一下 第170周
+### hihoCoder 1334
+
+**Word Construction**
 
 **问题描述：**
 
