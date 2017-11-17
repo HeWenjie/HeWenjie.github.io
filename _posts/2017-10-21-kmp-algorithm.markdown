@@ -58,6 +58,7 @@ next数组其实是子串中前缀和后缀的最长公共匹配字符数
 
 ```c++
 // c++
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -65,6 +66,7 @@ next数组其实是子串中前缀和后缀的最长公共匹配字符数
 using namespace std;
 
 // next数组的获取
+
 vector<int> getNext(string pattern) {
 	vector<int> next(pattern.length(), 0);
 
@@ -149,6 +151,7 @@ for (int i = 1; i < next.size(); i++) {
 
 ```c++
 // c++
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -157,6 +160,7 @@ for (int i = 1; i < next.size(); i++) {
 using namespace std;
 
 // next数组的获取
+
 vector<int> getNext(string pattern) {
 	vector<int> next(pattern.length(), 0);
 
