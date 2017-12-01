@@ -68,8 +68,11 @@ $$N$$的扩展二进制表示数目
 
 ```c++
 // c++
+
 #include <iostream>
+
 #include <vector>
+
 #include <cmath>
 
 using namespace std;
@@ -77,6 +80,7 @@ using namespace std;
 int sum = 0;
 
 // 获得当前条件下最大的数
+
 int maxnum(int k, int i) {
 	for (int j = 0; j <= i; j++) {
 		k += 2 * pow(2, j);
@@ -85,13 +89,16 @@ int maxnum(int k, int i) {
 }
 
 // 回溯
+
 void backtrack(int n, int i, vector<int> v, int k) {
 	if (i < 0) {
 		if (k == n) {
 			sum++;
 		}
 	}
+
 	// 剪枝：如果剩下未确定的数字全是2也比n要小，说明在当前分支不可能搜索到可行解
+
 	else if (maxnum(k, i) >= n) {
 		for (int j = 0; j < 3; j++) {
 			v[i] = j;

@@ -42,6 +42,7 @@ tags:
 
 ```c++
 // 最大团
+
 struct MCP {
 	vector<vector<int>> adjMat;    // 图的邻接矩阵
 	int v;                         // 图的顶点数目
