@@ -34,7 +34,7 @@ $$dp[i][j] = min/max(dp[i][j - 1], dp[i + (1 << j - 1)][j-1])$$
 
 代码如下:
 
-```c++
+```
 vector<vector<int>> dp;
 vector<vector<int>> index;
 
@@ -92,8 +92,7 @@ int query(int nStart, int nEnd) {
 
 **AC**代码:
 
-```c++
-
+```
 #include <iostream>
 #include <vector>
 #include <string>

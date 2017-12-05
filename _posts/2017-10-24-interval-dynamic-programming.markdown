@@ -42,14 +42,14 @@ Output the maximum score Little Ho can get.
 
 **Input**
 
-```c++
+```
 4
 -1 0 100 2
 ```
 
 **Output**
 
-```c++
+```
 99
 ```
 
@@ -74,7 +74,7 @@ $$$$
 
 **AC**代码
 
-```c++
+```
 #include <iostream>
 #include <vector>
 #include <algorithm>

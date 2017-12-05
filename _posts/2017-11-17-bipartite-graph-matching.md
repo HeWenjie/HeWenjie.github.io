@@ -65,7 +65,7 @@ tags:
 
 ### 算法代码
 
-```c++
+```
 bool find(int A[i]) {
 	for (int j = 0; j < B.size(); j++) {
 		// line[A[i]][B[j]] == true则说明A[i]与B[j]相连，flag[B[j]] == false表示没有另一个顶点A[x]尝试与B[j]匹配
@@ -98,7 +98,7 @@ for (int i = 0; i < A.size(); i++) {
 
 **AC**代码：
 
-```c++
+```
 #include <iostream>
 #include <string>
 #include <vector>

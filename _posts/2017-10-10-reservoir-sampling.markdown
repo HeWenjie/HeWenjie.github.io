@@ -34,7 +34,7 @@ $$p(m)=\frac{1}{m}\times \left ( \frac{m}{m+1}\times \frac{m+1}{m+2}\times ... \
 
 *《The Art of Computer Programming》*的伪代码：
 
-```c++
+```
 Init : a reservoir with the size: k
 for i = k + 1 to N
     M = random(1, i)
@@ -61,7 +61,7 @@ end for
 
 ### 蓄水池算法代码
 
-```c++
+```
 // 已知N的大小，但是N非常大（N >> K）
 void reservoir_sampling(vector<int> samples, vector<int> result, int N, int K) {
 
@@ -85,7 +85,7 @@ void reservoir_sampling(vector<int> samples, vector<int> result, int N, int K) {
 }
 ```
 
-```c++
+```
 // 不知道N的大小，假设N不会小于K
 void reservoir_sampling(vector<int> samples, vector<int> result, int K) {
 
@@ -119,7 +119,7 @@ void reservoir_sampling(vector<int> samples, vector<int> result, int K) {
 **Follow up：** What if the linked list is extremely large and its length is unknown to you? Could you solve this efficiently without using extra space?
 
 **Example：**
-```c++
+```
 // Init a singly linked list [1,2,3].
 ListNode head = new ListNode(1);
 head.next = new ListNode(2);
@@ -132,7 +132,7 @@ solution.getRandom();
 
 **AC**代码如下：
 
-```c++
+```
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -181,7 +181,7 @@ private:
 
 **Example：**
 
-```c++
+```
 int[] nums = new int[] {1,2,3,3,3};
 Solution solution = new Solution(nums);
 
@@ -194,7 +194,7 @@ solution.pick(1);
 
 **AC**代码如下：
 
-```c++
+```
 class Solution {
 public:
     Solution(vector<int> nums) {

@@ -99,7 +99,7 @@ $$\underset{n\leftarrow \infty}{lim}H_{n}(x)=\underset{n \leftarrow \infty}{lim}
 
 **LZW编码伪代码**
 
-```c++
+```
 Dictionary[j] = all n single-character, j = 1, 2, ..., n
 j = n + 1
 Prefix = read first Character in Charstream
@@ -117,7 +117,7 @@ Codestream = cW for Prefix
 
 **LZW译码伪代码**
 
-```c++
+```
 Dictionary[j] = all n single-character, j = 1, 2, ..., n
 j = n + 1
 cW = first code from Codestream
@@ -181,7 +181,7 @@ $$F(u,v)=\frac{1}{2}C(u)\left [ \sum_{i=0}^{7}G(i,v)cos\frac{(2i+1)u\pi}{16} \ri
 
 $$G(i,v)=\frac{1}{2}C(v)\left [ \sum_{j=0}^{7}f(i,j)cos\frac{(2j+1)v\pi}{16} \right ]$$
 
-```matlab
+```
 % 得到8 x 8的DCT变换矩阵
 DCT = dctmtx(8);
     
@@ -204,7 +204,7 @@ end
 
 ![色度量化值](/img/image-compression/chroma.png)
 
-```matlab
+```
 % 量化
 fun  = @(block_struct) round(block_struct.data ./ chromaTable);
 DCTYUV(:, :, 1) = blockproc(DCTYUV(:, :, 1), [8 8], fun);
@@ -232,7 +232,7 @@ $$8 \times 8$$图像块经过DCT变换之后得到的DC直流系数有两个特�
 
 $$\Delta = DC(0, 0)_{k}-DC(0,0)_{k-1}$$
 
-```matlab
+```
 % DC分量（DPCM编码）
 DC(1) = blocks(1, 1);
 for j = 2:size(blocks)
@@ -246,7 +246,7 @@ end
 
 JPEG使用$$1$$个字节的高$$4$$位来表示连续$$0$$的个数，使用低$$4$$位来表示编码下一个非$$0$$系数所需要的位数，跟在它后面的是量化AC系数的数值
 
-```matlab
+```
 blocks = blocks(:, 2:end);
 blocks = blocks(:);
     
@@ -278,7 +278,7 @@ JPEG使用哈夫曼编码器来减少熵，哈夫曼编码器可以很方便地�
 
 **算法代码**
 
-```matlab
+```
 % JPEG有损压缩
 
 % IMG转JPEG
@@ -571,7 +571,7 @@ RGB三个通道的PSNR分别是$$40.6374,41.3752,40.3066$$，平均PSNR是$$40.7
 
 **哈夫曼编解码代码如下：**
 
-```matlab
+```
 
 % 编码器
 function encoder = huffmanEncoder(img)

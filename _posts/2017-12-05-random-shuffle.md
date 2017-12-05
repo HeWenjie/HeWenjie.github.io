@@ -2,7 +2,7 @@
 layout:     post
 title:      "随机洗牌"
 subtitle:   "Random Shuffle"
-date:       2017-12-04 12:00:00
+date:       2017-12-05 12:00:00
 author:     "HE"
 header-img: "img/home-bg.jpg"
 header-mask: 0.3
@@ -30,6 +30,6 @@ vector<int> randomShuffle(vector<int> array) {
 		int j = rand() % (i + 1);
 		swap(array[i], array[j]);
 	}
-return array;
+	return array;
 }
 ```

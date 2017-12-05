@@ -56,7 +56,7 @@ next数组其实是子串中前缀和后缀的最长公共匹配字符数
 
 ### 算法代码
 
-```c++
+```
 // c++
 
 #include <iostream>
@@ -127,7 +127,7 @@ bool kmp(string str, string pattern) {
 
 算法优化如下：
 
-```c++
+```
 vector<int> temp = next;
 
 for (int i = temp.size() - 1; i > 0; i--) {
@@ -149,7 +149,7 @@ for (int i = 1; i < next.size(); i++) {
 
 **完整代码如下**（注意KMP算法中对$$-1$$）的处理
 
-```c++
+```
 // c++
 
 #include <iostream>

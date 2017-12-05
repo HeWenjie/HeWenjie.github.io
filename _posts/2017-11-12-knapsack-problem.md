@@ -40,7 +40,7 @@ $$v-c[i]$$表示在第$$i$$件物品还没放进去前的背包容量，所以$$
 
 伪代码如下：
 
-```c++
+```
 for (int i = 0; i < N; i++) {
 	for (int j = V; j >= c[i]; j--) {
 		f[j] = max(f[j], f[j - c[i]] + w[i]);
@@ -80,7 +80,7 @@ for (int i = 0; i < N; i++) {
 
 **Input**
 
-```c++
+```
 5 1000
 144 990
 487 436
@@ -91,13 +91,13 @@ for (int i = 0; i < N; i++) {
 
 **Output**
 
-```c++
+```
 2099
 ```
 
 **AC**代码
 
-```c++
+```
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -149,7 +149,7 @@ $$f[i][v] = max(f[i - 1][v - k * c[i]] + k * w[i]),0\leqslant k * c[i] \leqslant
 
 同样可以用一维数据进行空间优化，这里的$$max(f[i - 1][v - k * c[i]] + k * w[i])$$很明显是和当前的状态比较，看看是否新的状态会比当前状态的价值更大，因此内循环采用顺序即为完全背包问题
 
-```c++
+```
 for (int i = 0; i < N; i++) {
 	for (int j = c[i]; j <= V; j++) {
 		f[j] = max(f[j], f[j - c[i]] + w[i]);
@@ -189,7 +189,7 @@ for (int i = 0; i < N; i++) {
 
 **Input**
 
-```c++
+```
 5 1000
 144 990
 487 436
@@ -200,13 +200,13 @@ for (int i = 0; i < N; i++) {
 
 **Output**
 
-```c++
+```
 5940
 ```
 
 **AC**代码
 
-```c++
+```
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -253,7 +253,7 @@ $$f[i][v] = max(f[i - 1][v - k * c[i]] + k * w[i]),0\leqslant k \leqslant n[i] $
 
 其伪代码如下：
 
-```c++
+```
 for (int i = 0; i < N; i++) {
 	for (int j = 0; j < n[i]; j++) {
 		for (int k = V; k >= c[i]; k--) {

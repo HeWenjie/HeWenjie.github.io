@@ -22,7 +22,7 @@ tags:
 
 每一个集合都用其根节点来代表，查找操作用于获得当前节点所在的集合，也就是返回当前节点所在集合的根节点
 
-```c++
+```
 // 递归实现
 template <class DATATYPE>
 DATATYPE find(DATATYPE x) {
@@ -36,7 +36,7 @@ DATATYPE find(DATATYPE x) {
 }
 ```
 
-```c++
+```
 // 非递归实现
 template <class DATATYPE>
 DATATYPE find(DATATYPE name) {
@@ -60,7 +60,7 @@ DATATYPE find(DATATYPE name) {
 
 ![并查集合并操作](/img/union-find/union.jpg)
 
-```c++
+```
 template <class DATATYPE>
 void unite(DATATYPE a, DATATYPE b) {
 	a = find(a);
@@ -81,7 +81,7 @@ Given a $$N\times N$$ matrix $$M$$ representing the friend relationship between 
 
 **Example 1**
 
-```c++
+```
 Input: 
 [[1,1,0],
  [1,1,0],
@@ -93,7 +93,7 @@ The 2nd student himself is in a friend circle. So return 2.
 
 **Example 2**
 
-```c++
+```
 Input: 
 [[1,1,0],
  [1,1,1],
@@ -105,7 +105,7 @@ so the 0th and 2nd students are indirect friends. All of them are in the same fr
 
 **AC**代码：
 
-```c++
+```
 class Solution {
 public:
     int findCircleNum(vector<vector<int>>& M) {
@@ -188,7 +188,7 @@ Output the groups in the same order as their first usernames appear in the input
 
 **Input**
 
-```c++
+```
 4
 alice 2 alice@hihocoder.com alice@gmail.com
 bob 1 bob@qq.com
@@ -198,14 +198,14 @@ alice2016 1 alice@qq.com
 
 **Output**
 
-```c++
+```
 alice alicebest alice2016
 bob
 ```
 
 **AC**代码：
 
-```c++
+```
 #include <iostream>
 #include <vector>
 #include <string>

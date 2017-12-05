@@ -40,7 +40,7 @@ tags:
 
 ### 算法代码
 
-```c++
+```
 // 最大团
 
 struct MCP {
@@ -113,20 +113,20 @@ Output the most number of words can be selected.
 
 **Input**
 
-```c++
+```
 8
 the be to of and a in that
 ```
 
 **Output**
 
-```c++
+```
 4
 ```
 
 **AC**代码：
 
-```c++
+```
 #include <iostream>
 #include <string>
 #include <sstream>
