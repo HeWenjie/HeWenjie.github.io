@@ -91,23 +91,23 @@ $$f(x)=\frac{A}{1+e^{-\frac{x}{B}}}$$
 
 则该S型函数的导数如下：
 
-$$f'(x)=\frac{-A\cdot e^{-\frac{x}{B}}\cdot -\frac{x}{B}}{(1+e^{-\frac{x}{B}})^{2}}=\frac{x}{AB}\cdot \frac{A}{1+e^{-\frac{x}{B}}}\cdot (A-\frac{A}{1+e^{-\frac{x}{B}}})=\frac{xf(x)(A-f(x))}{AB}$$
+$$f'(x)=\frac{-A\cdot e^{-\frac{x}{B}}\cdot -\frac{1}{B}}{(1+e^{-\frac{x}{B}})^{2}}=\frac{1}{AB}\cdot \frac{A}{1+e^{-\frac{x}{B}}}\cdot (A-\frac{A}{1+e^{-\frac{x}{B}}})=\frac{f(x)(A-f(x))}{AB}$$
 
 将该S型函数的导数带入到权值梯度式子中，则对于隐藏层神经元$$i$$和输出层神经元$$j$$之间的权值梯度为：
 
-$$\Delta w_{ij}=-\eta (y_{j}-\hat{y_{j}})\cdot \frac{s_{j}\cdot x_{j}(A-x_{j})}{AB}\cdot x_{i}$$
+$$\Delta w_{ij}=-\eta (y_{j}-\hat{y_{j}})\cdot \frac{x_{j}(A-x_{j})}{AB}\cdot x_{i}$$
 
 同理，对于输入层神经元$$k$$和隐藏层神经元$$i$$之间的权值梯度为：
 
-$$\Delta w_{ki}=-\eta \sum_{j=0}^{n-1}\delta_{0}\cdot w_{ij}\cdot \frac{s_{i}\cdot x_{i}(A-x_{i})}{AB}\cdot x_{k}$$
+$$\Delta w_{ki}=-\eta \sum_{j=0}^{n-1}\delta_{0}\cdot w_{ij}\cdot \frac{x_{i}(A-x_{i})}{AB}\cdot x_{k}$$
 
 对于输出层神经元$$j$$的偏置值的梯度为：
 
-$$\Delta b_{j}=-\eta (y_{j}-\hat{y_{j}})\cdot \frac{s_{j}\cdot x_{j}(A-x_{j})}{AB}$$
+$$\Delta b_{j}=-\eta (y_{j}-\hat{y_{j}})\cdot \frac{x_{j}(A-x_{j})}{AB}$$
 
 对于隐藏层神经元$$i$$的偏置值的梯度为：
 
-$$\Delta b_{i}=-\eta \sum_{j=0}^{n-1}\delta_{0}\cdot w_{ij}\cdot \frac{s_{i}\cdot x_{i}(A-x_{i})}{AB}$$
+$$\Delta b_{i}=-\eta \sum_{j=0}^{n-1}\delta_{0}\cdot w_{ij}\cdot \frac{x_{i}(A-x_{i})}{AB}$$
 
 ## BP神经网络实现（Python）
 
