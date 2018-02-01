@@ -22,6 +22,30 @@ long factorial(long number)
     else
         return number*factorial(number - 1);
 }
+
+int permutation(int n, int m)
+{
+    int temp;
+    if (n<m)
+    {
+        temp = n;
+        n = m;
+        m = temp;
+    }
+    return factorial(n) / factorial(n - m);
+}
+```
+
+### 组合数
+
+```
+long factorial(long number)
+{
+    if (number <= 1)
+        return 1;
+    else
+        return number*factorial(number - 1);
+}
  
 int combinator(int n, int m)
 {
